@@ -1,0 +1,25 @@
+{
+  "name": "monosearch.github.io",
+  "version": "1.0.0",
+  "description": "A website for searching something, using a minimalistic and single-page design.",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikancat-taki/MonoSearch.github.io.git"
+  },
+  "keywords": [
+    "search",
+    "minimalist",
+    "single-page",
+    "github-pages"
+  ],
+  "author": "mikancat-taki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikancat-taki/MonoSearch.github.io/issues"
+  },
+  "homepage": "https://mikancat-taki.github.io/MonoSearch.github.io/"
+}
