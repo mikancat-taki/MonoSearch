@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html data-filename="pages/SourceCode" data-linenumber="567" data-visual-selector-id="pages/SourceCode567" lang="ja">
+<head data-filename="pages/SourceCode" data-linenumber="568" data-visual-selector-id="pages/SourceCode568">
+    <meta data-filename="pages/SourceCode" data-linenumber="569" data-visual-selector-id="pages/SourceCode569" charset="UTF-8">
+    <meta data-filename="pages/SourceCode" data-linenumber="570" data-visual-selector-id="pages/SourceCode570" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-filename="pages/SourceCode" data-linenumber="571" data-visual-selector-id="pages/SourceCode571">Breeze Search - 検索アプリ</title>
+    <script data-filename="pages/SourceCode" data-linenumber="572" data-visual-selector-id="pages/SourceCode572" src="https://cdn.tailwindcss.com"></script>
+    <script data-filename="pages/SourceCode" data-linenumber="573" data-visual-selector-id="pages/SourceCode573" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style data-filename="pages/SourceCode" data-linenumber="574" data-visual-selector-id="pages/SourceCode574">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex-grow: 1;
+        }
+        .prose h2 { font-size: 1.5em; margin-top: 1.5em; margin-bottom: 0.75em; font-weight: bold; }
+        .prose h3 { font-size: 1.25em; margin-top: 1.25em; margin-bottom: 0.625em; font-weight: bold; }
+        .prose ul { list-style: disc; margin-left: 1.5em; padding-left: 0.5em; }
+        .prose ul li { margin-bottom: 0.5em; }
+        .prose p { margin-bottom: 1em; }
+    </style>
+</head>
+<body data-filename="pages/SourceCode" data-linenumber="595" data-visual-selector-id="pages/SourceCode595" class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Header -->
+    <header data-filename="pages/SourceCode" data-linenumber="597" data-visual-selector-id="pages/SourceCode597" id="header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200 hidden">
+        <div data-filename="pages/SourceCode" data-linenumber="598" data-visual-selector-id="pages/SourceCode598" class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div data-filename="pages/SourceCode" data-linenumber="599" data-visual-selector-id="pages/SourceCode599" class="flex items-center justify-between h-16">
+                <a data-filename="pages/SourceCode" data-linenumber="600" data-visual-selector-id="pages/SourceCode600" href="#" id="header-logo" class="flex items-center gap-2">
+                    <i data-filename="pages/SourceCode" data-linenumber="601" data-visual-selector-id="pages/SourceCode601" data-lucide="wind" class="h-6 w-6 text-blue-500"></i>
+                    <h1 data-filename="pages/SourceCode" data-linenumber="602" data-visual-selector-id="pages/SourceCode602" class="text-xl font-bold">Breeze Search</h1>
+                </a>
+                <div data-filename="pages/SourceCode" data-linenumber="604" data-visual-selector-id="pages/SourceCode604" class="flex-1 max-w-xl ml-8">
+                    <form data-filename="pages/SourceCode" data-linenumber="605" data-visual-selector-id="pages/SourceCode605" id="header-search" class="relative">
+                        <input data-filename="pages/SourceCode" data-linenumber="606" data-visual-selector-id="pages/SourceCode606" 
+                            type="search" 
+                            id="header-input"
+                            placeholder="ウェブを検索..." 
+                            class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 border-transparent focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none"
+                        />
+                        <i data-filename="pages/SourceCode" data-linenumber="612" data-visual-selector-id="pages/SourceCode612" data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"></i>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main data-filename="pages/SourceCode" data-linenumber="620" data-visual-selector-id="pages/SourceCode620" id="main-content">
+        <!-- Home Page -->
+        <div data-filename="pages/SourceCode" data-linenumber="622" data-visual-selector-id="pages/SourceCode622" id="home-page" class="relative flex flex-col items-center justify-center min-h-screen text-center p-4 overflow-hidden">
+            <div data-filename="pages/SourceCode" data-linenumber="623" data-visual-selector-id="pages/SourceCode623" class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2070&auto=format&fit=crop');">
+                <div data-filename="pages/SourceCode" data-linenumber="624" data-visual-selector-id="pages/SourceCode624" class="absolute inset-0 bg-black/50"></div>
+            </div>
+            
+            <div data-filename="pages/SourceCode" data-linenumber="627" data-visual-selector-id="pages/SourceCode627" class="relative z-10 flex flex-col items-center">
+                <div data-filename="pages/SourceCode" data-linenumber="628" data-visual-selector-id="pages/SourceCode628" class="flex items-center gap-3 mb-6">
+                    <i data-filename="pages/SourceCode" data-linenumber="629" data-visual-selector-id="pages/SourceCode629" data-lucide="wind" class="h-16 w-16 text-white"></i>
+                    <h1 data-filename="pages/SourceCode" data-linenumber="630" data-visual-selector-id="pages/SourceCode630" class="text-6xl font-bold text-white tracking-tight">Breeze Search</h1>
+                </div>
+                <p data-filename="pages/SourceCode" data-linenumber="632" data-visual-selector-id="pages/SourceCode632" class="text-xl text-gray-200 mb-8 max-w-2xl">
+                    プライバシーを尊重した、高速でクリーンな検索体験を。
+                </p>
+
+                <form data-filename="pages/SourceCode" data-linenumber="636" data-visual-selector-id="pages/SourceCode636" id="search-form" class="w-full max-w-2xl bg-white/20 backdrop-blur-md p-2 rounded-full shadow-2xl">
+                    <div data-filename="pages/SourceCode" data-linenumber="637" data-visual-selector-id="pages/SourceCode637" class="relative flex items-center">
+                        <i data-filename="pages/SourceCode" data-linenumber="638" data-visual-selector-id="pages/SourceCode638" data-lucide="search" class="absolute left-4 h-6 w-6 text-gray-200"></i>
+                        <input data-filename="pages/SourceCode" data-linenumber="639" data-visual-selector-id="pages/SourceCode639" 
+                            type="search" 
+                            id="search-input"
+                            placeholder="何を調べていますか？" 
+                            class="w-full h-14 pl-14 pr-36 bg-transparent text-white text-lg placeholder-gray-300 border-none outline-none"
+                        />
+                        <button data-filename="pages/SourceCode" data-linenumber="645" data-visual-selector-id="pages/SourceCode645" type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 h-11 px-8 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-base font-semibold transition-all duration-300">
+                            検索
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Search Results Page -->
+        <div data-filename="pages/SourceCode" data-linenumber="654" data-visual-selector-id="pages/SourceCode654" id="results-page" class="hidden container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div data-filename="pages/SourceCode" data-linenumber="655" data-visual-selector-id="pages/SourceCode655" class="max-w-4xl mx-auto">
+                <div data-filename="pages/SourceCode" data-linenumber="656" data-visual-selector-id="pages/SourceCode656" class="mb-6">
+                    <h1 data-filename="pages/SourceCode" data-linenumber="657" data-visual-selector-id="pages/SourceCode657" id="results-title" class="text-2xl font-bold mb-2"></h1>
+                    
+                    <div data-filename="pages/SourceCode" data-linenumber="659" data-visual-selector-id="pages/SourceCode659" class="w-full bg-white rounded-lg shadow-md">
+                        <div data-filename="pages/SourceCode" data-linenumber="660" data-visual-selector-id="pages/SourceCode660" class="flex border-b border-gray-200 px-4 pt-2">
+                            <button data-filename="pages/SourceCode" data-linenumber="661" data-visual-selector-id="pages/SourceCode661" id="summary-tab" class="px-4 py-2 border-b-2 border-blue-500 text-blue-600 font-medium flex items-center gap-2">
+                                <i data-filename="pages/SourceCode" data-linenumber="662" data-visual-selector-id="pages/SourceCode662" data-lucide="sparkles" class="w-4 h-4"></i>
+                                AI概要
+                            </button>
+                            <button data-filename="pages/SourceCode" data-linenumber="665" data-visual-selector-id="pages/SourceCode665" id="results-tab" class="px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 flex items-center gap-2">
+                                <i data-filename="pages/SourceCode" data-linenumber="666" data-visual-selector-id="pages/SourceCode666" data-lucide="list" class="w-4 h-4"></i>
+                                検索結果
+                            </button>
+                        </div>
+                        
+                        <div data-filename="pages/SourceCode" data-linenumber="671" data-visual-selector-id="pages/SourceCode671" id="summary-content" class="p-6">
+                            <div data-filename="pages/SourceCode" data-linenumber="672" data-visual-selector-id="pages/SourceCode672" class="flex items-center gap-2 mb-4">
+                                <i data-filename="pages/SourceCode" data-linenumber="673" data-visual-selector-id="pages/SourceCode673" data-lucide="sparkles" class="w-5 h-5 text-purple-500"></i>
+                                <h2 data-filename="pages/SourceCode" data-linenumber="674" data-visual-selector-id="pages/SourceCode674" class="text-xl font-bold">AI による包括的な回答</h2>
+                            </div>
+                            <div data-filename="pages/SourceCode" data-linenumber="676" data-visual-selector-id="pages/SourceCode676" id="ai-summary" class="prose max-w-none">
+                                <div data-filename="pages/SourceCode" data-linenumber="677" data-visual-selector-id="pages/SourceCode677" class="animate-pulse space-y-4">
+                                    <div data-filename="pages/SourceCode" data-linenumber="678" data-visual-selector-id="pages/SourceCode678" class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                    <div data-filename="pages/SourceCode" data-linenumber="679" data-visual-selector-id="pages/SourceCode679" class="h-4 bg-gray-200 rounded w-full"></div>
+                                    <div data-filename="pages/SourceCode" data-linenumber="680" data-visual-selector-id="pages/SourceCode680" class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-filename="pages/SourceCode" data-linenumber="685" data-visual-selector-id="pages/SourceCode685" id="search-results-content" class="p-6 hidden">
+                            <div data-filename="pages/SourceCode" data-linenumber="686" data-visual-selector-id="pages/SourceCode686" id="search-results-list" class="space-y-6">
+                                <!-- Search results will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer data-filename="pages/SourceCode" data-linenumber="697" data-visual-selector-id="pages/SourceCode697" class="bg-white mt-auto">
+        <div data-filename="pages/SourceCode" data-linenumber="698" data-visual-selector-id="pages/SourceCode698" class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm text-gray-500">
+            <p data-filename="pages/SourceCode" data-linenumber="699" data-visual-selector-id="pages/SourceCode699">スタンドアロン HTML版 Breeze Search</p>
+            <p data-filename="pages/SourceCode" data-linenumber="700" data-visual-selector-id="pages/SourceCode700" class="mt-1">注意: この版では実際の検索機能は動作しません。デモンストレーション用です。</p>
+        </div>
+    </footer>
+
+    <script data-filename="pages/SourceCode" data-linenumber="704" data-visual-selector-id="pages/SourceCode704">
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Page state
+        let currentQuery = "";
+
+        // Navigation functions
+        function showPage(pageId) {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('results-page').classList.add('hidden');
+            document.getElementById('header').classList.add('hidden');
+
+            if (pageId === 'results') {
+                document.getElementById('results-page').classList.remove('hidden');
+                document.getElementById('header').classList.remove('hidden');
+            } else {
+                document.getElementById('home-page').classList.remove('hidden');
+            }
+        }
+
+        // Search functionality
+        function handleSearch(query) {
+            if (!query.trim()) return;
+            currentQuery = query;
+            
+            document.getElementById('results-title').textContent = `「${query}」の検索結果`;
+            document.getElementById('header-input').value = query; // Update header input
+            
+            showPage('results');
+            
+            // Reset content and show loading
+            document.getElementById('ai-summary').innerHTML = `
+                <div data-filename="pages/SourceCode" data-linenumber="737" data-visual-selector-id="pages/SourceCode737" class="animate-pulse space-y-4">
+                    <div data-filename="pages/SourceCode" data-linenumber="738" data-visual-selector-id="pages/SourceCode738" class="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div data-filename="pages/SourceCode" data-linenumber="739" data-visual-selector-id="pages/SourceCode739" class="h-4 bg-gray-200 rounded w-full"></div>
+                    <div data-filename="pages/SourceCode" data-linenumber="740" data-visual-selector-id="pages/SourceCode740" class="h-4 bg-gray-200 rounded w-5/6"></div>
+                </div>`;
+            document.getElementById('search-results-list').innerHTML = `
+                <div data-filename="pages/SourceCode" data-linenumber="743" data-visual-selector-id="pages/SourceCode743" class="space-y-6">
+                    ${Array(3).fill(`<div data-filename="pages/SourceCode" data-linenumber="744" data-visual-selector-id="pages/SourceCode744" class="bg-white rounded-lg shadow p-6">
+                        <div data-filename="pages/SourceCode" data-linenumber="745" data-visual-selector-id="pages/SourceCode745" class="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                        <div data-filename="pages/SourceCode" data-linenumber="746" data-visual-selector-id="pages/SourceCode746" class="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
+                        <div data-filename="pages/SourceCode" data-linenumber="747" data-visual-selector-id="pages/SourceCode747" class="h-4 bg-gray-200 rounded w-full"></div>
+                    </div>`).join('')}
+                </div>`;
+            
+            // Simulate AI summary (in real implementation, this would call an API)
+            setTimeout(() => {
+                const mockSummary = `
+                    <h2 data-filename="pages/SourceCode" data-linenumber="754" data-visual-selector-id="pages/SourceCode754">概要</h2>
+                    <p data-filename="pages/SourceCode" data-linenumber="755" data-visual-selector-id="pages/SourceCode755">「${query}」に関する検索が実行されました。</p>
+                    
+                    <h3 data-filename="pages/SourceCode" data-linenumber="757" data-visual-selector-id="pages/SourceCode757">主要なポイント</h3>
+                    <ul data-filename="pages/SourceCode" data-linenumber="758" data-visual-selector-id="pages/SourceCode758">
+                        <li data-filename="pages/SourceCode" data-linenumber="759" data-visual-selector-id="pages/SourceCode759">この版はデモンストレーション用のスタンドアロンHTMLファイルです</li>
+                        <li data-filename="pages/SourceCode" data-linenumber="760" data-visual-selector-id="pages/SourceCode760">実際のAI機能や検索機能は含まれていません</li>
+                        <li data-filename="pages/SourceCode" data-linenumber="761" data-visual-selector-id="pages/SourceCode761">UIとレイアウトの参考として使用してください</li>
+                    </ul>
+                    
+                    <h3 data-filename="pages/SourceCode" data-linenumber="764" data-visual-selector-id="pages/SourceCode764">詳細情報</h3>
+                    <p data-filename="pages/SourceCode" data-linenumber="765" data-visual-selector-id="pages/SourceCode765">完全に機能するバージョンを作成するには、以下が必要です：</p>
+                    <ul data-filename="pages/SourceCode" data-linenumber="766" data-visual-selector-id="pages/SourceCode766">
+                        <li data-filename="pages/SourceCode" data-linenumber="767" data-visual-selector-id="pages/SourceCode767">OpenAI APIまたは他のLLM APIとの統合</li>
+                        <li data-filename="pages/SourceCode" data-linenumber="768" data-visual-selector-id="pages/SourceCode768">DuckDuckGo APIまたは他の検索エンジンAPIとの統合</li>
+                        <li data-filename="pages/SourceCode" data-linenumber="769" data-visual-selector-id="pages/SourceCode769">CORSプロキシサーバーの設定</li>
+                        <li data-filename="pages/SourceCode" data-linenumber="770" data-visual-selector-id="pages/SourceCode770">適切なエラーハンドリング</li>
+                    </ul>
+                `;
+                document.getElementById('ai-summary').innerHTML = mockSummary;
+            }, 1000); // Simulate API call delay
+            
+            // Ensure summary tab is active initially
+            document.getElementById('summary-tab').click();
+        }
+
+        // Event listeners
+        document.getElementById('search-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value;
+            handleSearch(query);
+        });
+
+        document.getElementById('header-search').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = document.getElementById('header-input').value;
+            handleSearch(query);
+        });
+        
+        // Tab switching
+        document.getElementById('summary-tab').addEventListener('click', () => {
+            document.getElementById('summary-tab').className = 'px-4 py-2 border-b-2 border-blue-500 text-blue-600 font-medium flex items-center gap-2';
+            document.getElementById('results-tab').className = 'px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 flex items-center gap-2';
+            document.getElementById('summary-content').classList.remove('hidden');
+            document.getElementById('search-results-content').classList.add('hidden');
+        });
+
+        document.getElementById('results-tab').addEventListener('click', () => {
+            document.getElementById('results-tab').className = 'px-4 py-2 border-b-2 border-blue-500 text-blue-600 font-medium flex items-center gap-2';
+            document.getElementById('summary-tab').className = 'px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 flex items-center gap-2';
+            document.getElementById('search-results-content').classList.remove('hidden');
+            document.getElementById('summary-content').classList.add('hidden');
+            
+            // Mock search results
+            setTimeout(() => { // Simulate API call delay for results
+                const mockResults = [
+                    {
+                        title: "サンプル検索結果 1",
+                        link: "https://example.com/1",
+                        snippet: "これはサンプルの検索結果です。実際の実装では、検索エンジンAPIからの結果が表示されます。"
+                    },
+                    {
+                        title: "サンプル検索結果 2", 
+                        link: "https://example.com/2",
+                        snippet: "2番目のサンプル結果です。HTMLファイル版では模擬的な結果のみ表示されます。"
+                    },
+                    {
+                        title: "Breeze Searchとは", 
+                        link: "https://example.com/breeze",
+                        snippet: "Breeze Searchは、AIを活用した新しい検索体験を提供するコンセプトプロジェクトです。"
+                    }
+                ];
+                
+                const resultsHtml = mockResults.map(result => `
+                    <div data-filename="pages/SourceCode" data-linenumber="828" data-visual-selector-id="pages/SourceCode828" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div data-filename="pages/SourceCode" data-linenumber="829" data-visual-selector-id="pages/SourceCode829" class="flex items-center gap-2 mb-2">
+                            <i data-filename="pages/SourceCode" data-linenumber="830" data-visual-selector-id="pages/SourceCode830" data-lucide="globe" class="w-4 h-4 text-gray-400"></i>
+                            <p data-filename="pages/SourceCode" data-linenumber="831" data-visual-selector-id="pages/SourceCode831" class="text-sm text-gray-600 truncate">${result.link}</p>
+                        </div>
+                        <a data-filename="pages/SourceCode" data-linenumber="833" data-visual-selector-id="pages/SourceCode833" href="${result.link}" target="_blank" rel="noopener noreferrer" class="block">
+                            <h2 data-filename="pages/SourceCode" data-linenumber="834" data-visual-selector-id="pages/SourceCode834" class="text-xl font-medium text-blue-600 hover:underline mb-3">
+                                ${result.title}
+                            </h2>
+                            <p data-filename="pages/SourceCode" data-linenumber="837" data-visual-selector-id="pages/SourceCode837" class="text-gray-700">${result.snippet}</p>
+                        </a>
+                    </div>
+                `).join('');
+                
+                document.getElementById('search-results-list').innerHTML = resultsHtml;
+                lucide.createIcons(); // Re-initialize icons for new content
+            }, 1500); // Simulate API call delay for results
+        });
+
+        // Logo click to return home
+        document.getElementById('header-logo').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('home');
+            document.getElementById('search-input').value = ""; // Clear home search input
+            document.getElementById('header-input').value = ""; // Clear header search input
+            currentQuery = "";
+        });
+
+        // Initial page load
+        showPage('home');
+    </script>
+</body>
+</html>
